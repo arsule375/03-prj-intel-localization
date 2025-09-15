@@ -1,0 +1,119 @@
+/*
+	Modern Intel-Inspired Timeline Styles
+	- Responsive: horizontal scroll on large screens, vertical stack on small screens
+	- Intel branding: blue, white, gray, subtle gradients
+	- Card design: shadow, rounded corners, image on each card
+*/
+
+body {
+	font-family: 'Segoe UI', Arial, sans-serif;
+	background: linear-gradient(120deg, #e6f0fa 0%, #f8fafc 100%);
+	color: #222;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	background: #0068b5; /* Intel blue */
+	color: #fff;
+	padding: 2rem 1rem 1rem 1rem;
+	text-align: center;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.timeline {
+	display: flex;
+	flex-direction: row;
+	overflow-x: auto;
+	gap: 2rem;
+	padding: 2rem 1rem;
+	scroll-snap-type: x mandatory;
+}
+
+.timeline-card {
+	background: #fff;
+	border-radius: 1.2rem;
+	box-shadow: 0 4px 24px 0 rgba(0,104,181,0.10), 0 1.5px 6px 0 rgba(0,0,0,0.04);
+	min-width: 320px;
+	max-width: 340px;
+	flex: 0 0 320px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1.5rem 1rem 2rem 1rem;
+	scroll-snap-align: start;
+	transition: box-shadow 0.2s;
+	border: 1.5px solid #e0eaf6;
+}
+
+.timeline-card:hover {
+	box-shadow: 0 8px 32px 0 rgba(0,104,181,0.18), 0 3px 12px 0 rgba(0,0,0,0.08);
+	border-color: #0068b5;
+}
+
+.timeline-card img {
+	width: 100%;
+	max-width: 280px;
+	height: 160px;
+	object-fit: cover;
+	border-radius: 0.8rem;
+	margin-bottom: 1.2rem;
+	box-shadow: 0 2px 8px rgba(0,104,181,0.08);
+}
+
+.timeline-card h3 {
+	color: #0068b5;
+	margin: 0 0 0.5rem 0;
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.timeline-card p {
+	color: #444;
+	font-size: 1rem;
+	margin: 0 0 0.5rem 0;
+	line-height: 1.5;
+}
+
+.timeline-card time {
+	color: #0071c5;
+	font-size: 0.95rem;
+	margin-bottom: 0.5rem;
+	font-weight: 500;
+	letter-spacing: 0.02em;
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 700px) {
+	.timeline {
+		flex-direction: column;
+		gap: 1.5rem;
+		overflow-x: visible;
+		padding: 1rem 0.5rem;
+	}
+	.timeline-card {
+		min-width: 0;
+		max-width: 100%;
+		width: 100%;
+		flex: 1 1 100%;
+	}
+}
+
+/* Subtle divider for timeline */
+.timeline::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100%;
+	border-top: 2px solid #e0eaf6;
+	z-index: 0;
+	pointer-events: none;
+}
+
+/* Utility classes for spacing */
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
